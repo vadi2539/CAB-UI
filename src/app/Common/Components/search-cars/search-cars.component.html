@@ -1,0 +1,396 @@
+<div class="body">
+    <div class="search-page">
+            <div class="top-header">
+                    <app-header></app-header>
+            </div>
+            <div class="search-car">
+                <div class="pagenation-top">
+                    <div class="container">
+                    <span><a routerLink="/home" routerLinkActive="active">Home</a></span> > <span>Select Cars</span>
+                    <div class="col-md-1 pull-right">
+                        <button mat-button class="modify-btn pull-right">Modify</button>
+                    </div>
+                    <div class="col-md-2 pull-right modify-time">
+                        <label>Time <mat-icon>timer</mat-icon> </label>
+                        <p>9:00 PM</p>
+                    </div>
+                    <div class="col-md-2 pull-right date-time">
+                        <label>Pick Up <mat-icon>calendar_today</mat-icon> </label>
+                        <p>23-02-2022</p>
+                    </div>
+                </div>
+                </div>
+               
+            </div>
+            <div class="search-car-div">
+                <div class="container">
+                    <ul>
+                        <li>
+                            <div class="list-of-card">
+                                <div class="top-list list-car-details">
+                                    <img class="listofcompanycar" src="../../../../assets/images/multi-slider-img1.png">
+                                    <span class="car-name">
+                                        <h3>TATA INDICA</h3>
+                                        <p class="tooltip">or equivalent <img class="info-icon" src="../../../../assets/images/Information-icon_new.png" ><span class="tooltiptext">Inculdes Ac Cabs like i10,i20,swift and indica </span></p>
+                                    </span>
+                                </div>
+                                <div class="top-list km-div">
+                                    <h4><img class="km-icon" src="../../../../assets/images/road-sign.png"> Includes 51 km</h4>
+                                    <button mat-button (click)="detailCLick($event)" class="car-details-btn pull-right">Details</button>
+                                </div>
+                                <div class="top-list car-amt-btn">
+                                    <span class="car-amt-span">
+                                        <h5>₹1410</h5>
+                                        <p>Save ₹352</p>
+                                    </span>
+                                     <span class="car-amt-span">
+<h3> ₹1058 </h3>
+<div class="in-gst"> Includes Toll & GST </div>
+                                     </span>
+
+                                </div>
+                                <div class="top-list car-select-btn">
+                                   <button mat-button (click)="selectButton()" class="select-btn">Estimate</button>
+                                </div>
+                                <div class="bottom-list" *ngIf="expand=='1'">
+                                    <div class="login-tabs">
+                                    <mat-tab-group>
+                                        <mat-tab label="Inclusions"> 
+                                            <ul class="inclu-list">
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/inclusions_icon1.png">
+                                                    <h6> Base Fare</h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/inclusions_icon2.png">
+                                                    <h6> Driver Allowance</h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/exclusions_icon2.png">
+                                                    <h6> Toll / State tax</h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/inclusions_icon3.png">
+                                                    <h6> GST (5%)</h6>
+                                                </li>
+                                            </ul>    
+                                        </mat-tab>
+                                        <mat-tab label="Exclusions"> 
+                                            <ul class="inclu-list">
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/exclusions_icon3.png">
+                                                    <h6> Parking </h6>
+                                                </li>
+                                            </ul>    
+                                        </mat-tab>
+                                        <mat-tab label="Facilities"> 
+                                            <ul class="inclu-list">
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/facilities_icon1.png">
+                                                    <h6> 4 seater </h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/facilities_icon2.png">
+                                                    <h6> 2 bags </h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/facilities_icon3.png">
+                                                    <h6> AC  </h6>
+                                                </li>
+                                            </ul>    
+                                        </mat-tab>
+                                        <mat-tab label="T&C"> 
+                                            <ul class="team-con">
+                                                <li>
+                                                    This package has a FLAT transfer rate i.e. you do not need to pay for any Toll, extra KM or Hour charges. 
+                                                </li>
+                                                <li>
+                                                    Your trip includes one pick up or drop off within city.
+                                                </li>
+                                            </ul>
+                                        </mat-tab>
+                                      </mat-tab-group>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-of-card">
+                                <div class="top-list list-car-details">
+                                    <img class="listofcompanycar" src="../../../../assets/images/multi-slider-img2.png">
+                                    <span class="car-name">
+                                        <h3>TOYOTA INNOVA</h3>
+                                        <p class="tooltip">or equivalent <img class="info-icon" src="../../../../assets/images/Information-icon_new.png" ><span class="tooltiptext">Includes AC Cabs like Ertiga,Xylo and Tavera</span></p>
+                                    </span>
+                                </div>
+                                <div class="top-list km-div">
+                                    <h4><img class="km-icon" src="../../../../assets/images/road-sign.png"> Includes 51 km</h4>
+                                    <button mat-button (click)="detailCLick1($event)" class="car-details-btn pull-right">Details</button>
+                                </div>
+                                <div class="top-list car-amt-btn">
+                                    <span class="car-amt-span">
+                                        <h5>₹1410</h5>
+                                        <p>Save ₹352</p>
+                                    </span>
+                                     <span class="car-amt-span">
+<h3> ₹1058 </h3>
+<div class="in-gst"> Includes Toll & GST </div>
+                                     </span>
+
+                                </div>
+                                <div class="top-list car-select-btn">
+                                   <button mat-button (click)="Selectbutton1()" class="select-btn">Estimate</button>
+                                </div>
+                                <div class="bottom-list" *ngIf="expand1=='1'">
+                                    <div class="login-tabs">
+                                        <mat-tab-group>
+                                            <mat-tab label="Inclusions"> 
+                                                <ul class="inclu-list">
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/inclusions_icon1.png">
+                                                        <h6> Base Fare</h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/inclusions_icon2.png">
+                                                        <h6> Driver Allowance</h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/exclusions_icon2.png">
+                                                        <h6> Toll / State tax</h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/inclusions_icon3.png">
+                                                        <h6> GST (5%)</h6>
+                                                    </li>
+                                                </ul>    
+                                            </mat-tab>
+                                            <mat-tab label="Exclusions"> 
+                                                <ul class="inclu-list">
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/exclusions_icon3.png">
+                                                        <h6> Parking </h6>
+                                                    </li>
+                                                </ul>    
+                                            </mat-tab>
+                                            <mat-tab label="Facilities"> 
+                                                <ul class="inclu-list">
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/facilities_icon1.png">
+                                                        <h6> 4 seater </h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/facilities_icon2.png">
+                                                        <h6> 2 bags </h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/facilities_icon3.png">
+                                                        <h6> AC  </h6>
+                                                    </li>
+                                                </ul>    
+                                            </mat-tab>
+                                            <mat-tab label="T&C"> 
+                                                <ul class="team-con">
+                                                    <li>
+                                                        This package has a FLAT transfer rate i.e. you do not need to pay for any Toll, extra KM or Hour charges. 
+                                                    </li>
+                                                    <li>
+                                                        Your trip includes one pick up or drop off within city.
+                                                    </li>
+                                                </ul>
+                                            </mat-tab>
+                                          </mat-tab-group>
+                                        </div>
+                                </div>
+                                <div class="bottom-list" style="display:none"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-of-card">
+                                <div class="top-list list-car-details">
+                                    <img class="listofcompanycar" src="../../../../assets/images/multi-slider-img3.png">
+                                    <span class="car-name">
+                                        <h3>TOYOTA ETIOS</h3>
+                                        <p class="tooltip">or equivalent <img class="info-icon" src="../../../../assets/images/Information-icon_new.png" ><span class="tooltiptext">Includes AC Cabs Like Dzire,Amaze,Xcent,Zest and Etios</span></p>
+                                    </span>
+                                </div>
+                                <div class="top-list km-div">
+                                    <h4><img class="km-icon" src="../../../../assets/images/road-sign.png"> Includes 51 km</h4>
+                                    <button mat-button (click)="detailCLick2($event)" class="car-details-btn pull-right">Details</button>
+                                </div>
+                                <div class="top-list car-amt-btn">
+                                    <span class="car-amt-span">
+                                        <h5>₹1410</h5>
+                                        <p>Save ₹352</p>
+                                    </span>
+                                     <span class="car-amt-span">
+<h3> ₹1058 </h3>
+<div class="in-gst"> Includes Toll & GST </div>
+                                     </span>
+
+                                </div>
+                                <div class="top-list car-select-btn">
+                                   <button mat-button (click)="SelectButton2()" class="select-btn">Estimate</button>
+                                </div>
+                                <div class="bottom-list" *ngIf="expand2=='1'">
+                                    <div class="login-tabs">
+                                    <mat-tab-group>
+                                        <mat-tab label="Inclusions"> 
+                                            <ul class="inclu-list">
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/inclusions_icon1.png">
+                                                    <h6> Base Fare</h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/inclusions_icon2.png">
+                                                    <h6> Driver Allowance</h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/exclusions_icon2.png">
+                                                    <h6> Toll / State tax</h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/inclusions_icon3.png">
+                                                    <h6> GST (5%)</h6>
+                                                </li>
+                                            </ul>    
+                                        </mat-tab>
+                                        <mat-tab label="Exclusions"> 
+                                            <ul class="inclu-list">
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/exclusions_icon3.png">
+                                                    <h6> Parking </h6>
+                                                </li>
+                                            </ul>    
+                                        </mat-tab>
+                                        <mat-tab label="Facilities"> 
+                                            <ul class="inclu-list">
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/facilities_icon1.png">
+                                                    <h6> 4 seater </h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/facilities_icon2.png">
+                                                    <h6> 2 bags </h6>
+                                                </li>
+                                                <li>
+                                                    <img class="inclu-icon" src="../../../../assets/images/facilities_icon3.png">
+                                                    <h6> AC  </h6>
+                                                </li>
+                                            </ul>    
+                                        </mat-tab>
+                                        <mat-tab label="T&C"> 
+                                            <ul class="team-con">
+                                                <li>
+                                                    This package has a FLAT transfer rate i.e. you do not need to pay for any Toll, extra KM or Hour charges. 
+                                                </li>
+                                                <li>
+                                                    Your trip includes one pick up or drop off within city.
+                                                </li>
+                                            </ul>
+                                        </mat-tab>
+                                      </mat-tab-group>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-of-card">
+                                <div class="top-list list-car-details">
+                                    <img class="listofcompanycar" src="../../../../assets/images/multi-slider-img4.png">
+                                    <span class="car-name">
+                                        <h3>MAHINDRA XUV</h3>
+                                        <p class="tooltip">or equivalent <img class="info-icon" src="../../../../assets/images/Information-icon_new.png" ><span class="tooltiptext">includes Ac Cabs Like Breeza,Nexon,Duster and Xuv</span></p>
+                                    </span>
+                                </div>
+                                <div class="top-list km-div">
+                                    <h4><img class="km-icon" src="../../../../assets/images/road-sign.png"> Includes 51 km</h4>
+                                    <button mat-button (click)="detailCLick3($event)" class="car-details-btn pull-right">Details</button>
+                                </div>
+                                <div class="top-list car-amt-btn">
+                                    <span class="car-amt-span">
+                                        <h5>₹1410</h5>
+                                        <p>Save ₹352</p>
+                                    </span>
+                                     <span class="car-amt-span">
+<h3> ₹1058 </h3>
+<div class="in-gst"> Includes Toll & GST </div>
+                                     </span>
+
+                                </div>
+                                <div class="top-list car-select-btn">
+                                    <button mat-button (click)="SelectButton3()" class="select-btn">Estimate</button>
+                                </div>
+                                <div class="bottom-list" *ngIf="expand3=='1'">
+                                    <div class="login-tabs">
+                                        <mat-tab-group>
+                                            <mat-tab label="Inclusions"> 
+                                                <ul class="inclu-list">
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/inclusions_icon1.png">
+                                                        <h6> Base Fare</h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/inclusions_icon2.png">
+                                                        <h6> Driver Allowance</h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/exclusions_icon2.png">
+                                                        <h6> Toll / State tax</h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/inclusions_icon3.png">
+                                                        <h6> GST (5%)</h6>
+                                                    </li>
+                                                </ul>    
+                                            </mat-tab>
+                                            <mat-tab label="Exclusions"> 
+                                                <ul class="inclu-list">
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/exclusions_icon3.png">
+                                                        <h6> Parking </h6>
+                                                    </li>
+                                                </ul>    
+                                            </mat-tab>
+                                            <mat-tab label="Facilities"> 
+                                                <ul class="inclu-list">
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/facilities_icon1.png">
+                                                        <h6> 4 seater </h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/facilities_icon2.png">
+                                                        <h6> 2 bags </h6>
+                                                    </li>
+                                                    <li>
+                                                        <img class="inclu-icon" src="../../../../assets/images/facilities_icon3.png">
+                                                        <h6> AC  </h6>
+                                                    </li>
+                                                </ul>    
+                                            </mat-tab>
+                                            <mat-tab label="T&C"> 
+                                                <ul class="team-con">
+                                                    <li>
+                                                        This package has a FLAT transfer rate i.e. you do not need to pay for any Toll, extra KM or Hour charges. 
+                                                    </li>
+                                                    <li>
+                                                        Your trip includes one pick up or drop off within city.
+                                                    </li>
+                                                </ul>
+                                            </mat-tab>
+                                          </mat-tab-group>
+                                        </div>
+                                </div>
+                                <div class="bottom-list" style="display:none"></div>
+                            </div>
+                        </li>
+                        
+
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="footer">
+                <app-footer></app-footer>
+        </div>
+                </div>
+                </div>

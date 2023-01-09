@@ -1,0 +1,996 @@
+<div class="body">
+        <div class="home-page">
+                <div class="top-header">
+                        <app-header></app-header>
+                </div>
+                <div class="banner-slider" id="home">
+                        <div class="col-md-6 home-left">
+                                <div class="col-md-10 pull-right">
+                                        <h4>FIND YOUR CAR!</h4>
+                                        <h3>RENT A CAR</h3>
+                                        <div class="login-tabs">
+                                                <mat-tab-group>
+                                                        <mat-tab label="OUTSTATION">
+
+
+                                                                <form [formGroup]="outstationForm">
+                                                                        <div class="oneway-round-btns align-center">
+                                                                                <mat-radio-group
+                                                                                        formControlName="optionOutstation"
+                                                                                        aria-label="Select an option">
+                                                                                        <mat-radio-button
+                                                                                                (click)="onCheckChange('ONE')"
+                                                                                                class="oneway-btn"
+                                                                                                value="ONE">ONE
+                                                                                                WAY</mat-radio-button>
+                                                                                        <mat-radio-button
+                                                                                                (click)="onCheckChange('ROUND')"
+                                                                                                class="round-btn"
+                                                                                                value="ROUND">ROUND
+                                                                                                TRIP</mat-radio-button>
+                                                                                </mat-radio-group>
+                                                                        </div>
+                                                                        <div class="form-fileds">
+                                                                                <div class="form-group">
+                                                                                        <mat-label>NAME</mat-label>
+                                                                                        <mat-form-field
+                                                                                                class="example-full-width">
+                                                                                                <input matInput required
+                                                                                                        placeholder=""
+                                                                                                        formControlName="name" required type="text">
+                                                                                                <mat-error
+                                                                                                        *ngIf="outstationForm.get('name').hasError('required')" >
+                                                                                                        Please enter the
+                                                                                                        name
+                                                                                        
+                                                                                                </mat-error>
+                                                                                                
+                                                                                        </mat-form-field>
+                                                                                </div>        
+
+                                                                                <div class="form-group">
+                                                                                        <mat-label>MOBILE</mat-label>
+                                                                                        <mat-form-field
+                                                                                                class="example-full-width">
+                                                                                                <input matInput required
+                                                                                                        placeholder=""
+                                                                                                        value=""
+                                                                                                        maxlength="10"
+                                                                                                        formControlName="mobile" type="tel">
+                                                                                                <mat-error
+                                                                                                        *ngIf="outstationForm.get('mobile').hasError('required')">
+                                                                                                        Please enter the
+                                                                                                        Mobile Number
+                                                                                                </mat-error>
+                                                                                        </mat-form-field>
+                                                                                        <span style="color:red" class="text-muted" *ngIf="outstationForm.get('mobile').hasError('pattern') && outstationForm.get('mobile').dirty">Accepts Numbers only</span>
+
+
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <mat-label>FROM</mat-label>
+                                                                                        <mat-form-field
+                                                                                                class="example-full-width">
+                                                                                                <mat-select
+                                                                                                        formControlName="from">
+                                                                                                        <mat-option>
+                                                                                                                <ngx-mat-select-search
+                                                                                                                        [placeholderLabel]="'Search'"
+                                                                                                                        [noEntriesFoundLabel]="'No record found'"
+                                                                                                                        [formControl]="fromControl"
+                                                                                                                        [disableInitialFocus]="true">
+                                                                                                                </ngx-mat-select-search>
+                                                                                                        </mat-option>
+                                                                                                        <mat-option
+                                                                                                                title="{{lov.name}}"
+                                                                                                                *ngFor="let lov of lovs |filterData:fromControl.value:'name' "
+                                                                                                                [value]="lov.id">
+                                                                                                                {{lov.name}}
+                                                                                                        </mat-option>
+                                                                                                </mat-select>
+                                                                                                <mat-error
+                                                                                                        *ngIf="outstationForm.get('from').hasError('required')">
+                                                                                                        Please select
+                                                                                                        the source
+                                                                                                        city
+                                                                                                </mat-error>
+
+                                                                                                <!-- <input matInput
+                                                                                                        placeholder=""
+                                                                                                        value="" formControlName="from"> -->
+                                                                                        </mat-form-field>
+
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <mat-label>TO</mat-label>
+                                                                                        <mat-form-field
+                                                                                                class="example-full-width">
+                                                                                                <mat-select
+                                                                                                        formControlName="to">
+                                                                                                        <mat-option>
+                                                                                                                <ngx-mat-select-search
+                                                                                                                placeholderLabel="Search"
+                                                                                                                        [noEntriesFoundLabel]="'No record found'"
+                                                                                                                        [formControl]="toControl"
+                                                                                                                        [disableInitialFocus]="true">
+                                                                                                                </ngx-mat-select-search>
+                                                                                                        </mat-option>
+                                                                                                        <mat-option
+                                                                                                                title="{{lov.name}}"
+                                                                                                                *ngFor="let lov of lovs |filterData:toControl.value:'name' "
+                                                                                                                [value]="lov.id">
+                                                                                                                {{lov.name}}
+                                                                                                        </mat-option>
+                                                                                                </mat-select>
+                                                                                                <mat-error
+                                                                                                        *ngIf="outstationForm.get('to').hasError('required')">
+                                                                                                        Please select
+                                                                                                        the
+                                                                                                        destination city
+                                                                                                </mat-error>
+                                                                                                <!-- <input matInput
+                                                                                                        placeholder=""
+                                                                                                        value="" formControlName="to"> -->
+                                                                                        </mat-form-field>
+
+
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-md-9 pull-right datefiled">
+                                                                                        <div class="col-md-6">
+                                                                                                <div class="form-group">
+                                                                                                        <mat-label>PICK
+                                                                                                                UP DATE
+                                                                                                        </mat-label>
+                                                                                                        <mat-form-field
+                                                                                                                class="example-full-width">
+                                                                                                                <input matInput (dateChange)="addEvent('change', $event)"
+                                                                                                                        [min]="minDate"
+                                                                                                                        [matDatepicker]="pickUpDate"
+                                                                                                                        formControlName="pickUpDate">
+                                                                                                                <mat-datepicker-toggle
+                                                                                                                matSuffix
+                                                                                                                        [for]="pickUpDate">
+                                                                                                                </mat-datepicker-toggle>
+                                                                                                                <mat-datepicker
+                                                                                                                        #pickUpDate>
+                                                                                                                </mat-datepicker>
+                                                                                                                <mat-error *ngIf="outstationForm.get('pickUpDate').hasError('required')">Please select the pick up date</mat-error>
+                                                                                                                </mat-form-field>
+
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 timer">
+                                                                                                <div class="form-group">
+                                                                                                        <mat-label>PICK
+                                                                                                                UP TIME
+                                                                                                        </mat-label>
+                                                                                                        <mat-form-field
+                                                                                                                class="example-full-width pickup-timer">
+                                                                                                                
+                                                                                                                <mat-select formControlName="pickUpTime" >
+                                                                                                                        <mat-option
+                                                                                                                                *ngFor="let pickup of pickups"
+                                                                                                                                [value]="pickup.value">
+                                                                                                                                {{pickup.viewValue}}
+                                                                                                                        </mat-option>
+                                                                                                                </mat-select>
+                                                                                                                <!-- <input type=""
+                                                                                                                        matInput
+                                                                                                                        placeholder="" FormControlName="pickUpTime"> -->
+                                                                                                                <mat-icon
+                                                                                                                        matSuffix>
+                                                                                                                        timer
+                                                                                                                </mat-icon>
+                                                                                                               <mat-error *ngIf="outstationForm.get('pickUpTime').hasError('required')">Please select the pickup time</mat-error>
+                                                                                                        </mat-form-field>
+
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+
+                                                                                                <div class="form-group"
+                                                                                                        *ngIf="this.returnDate=='ROUND'"
+                                                                                                        style="margin-top: -8px;">
+                                                                                                        <mat-label>
+                                                                                                                RETURN
+                                                                                                                DATE
+                                                                                                        </mat-label>
+                                                                                                        <mat-form-field
+                                                                                                                class="example-full-width">
+                                                                                                                <input matInput
+                                                                                                                        [min]="mindate"
+                                                                                                                        [matDatepicker]="returnDate"
+                                                                                                                        formControlName="returnDate">
+                                                                                                                <mat-datepicker-toggle
+                                                                                                                        matSuffix
+                                                                                                                        [for]="returnDate">
+                                                                                                                </mat-datepicker-toggle>
+                                                                                                                <mat-datepicker
+                                                                                                                        #returnDate>w
+                                                                                                                </mat-datepicker>
+                                                                                                                <mat-error
+                                                                                                                        *ngIf="outstationForm.get('returnDate').hasError('required')">
+                                                                                                                        please
+                                                                                                                        select
+                                                                                                                        the
+                                                                                                                        return
+                                                                                                                        date
+                                                                                                                </mat-error>
+                                                                                                        </mat-form-field>
+
+                                                                                                </div>
+                                                                                        </div>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-md-12 pull-right datefiled round-trip-div">
+                                                                                        <div class="col-md-4"
+                                                                                                style="padding-left: 0px;padding-right: 7.5px;">
+                                                                                                <div class="form-group">
+                                                                                                        <mat-label>PICK
+                                                                                                                UP DATE
+                                                                                                        </mat-label>
+                                                                                                        <mat-form-field
+                                                                                                                class="example-full-width">
+                                                                                                                <input matInput
+                                                                                                                        [min]="minDate"
+                                                                                                                        [matDatepicker]="pickUpDate4"
+                                                                                                                        formControlName="pickUpDate">
+                                                                                                                <mat-datepicker-toggle
+                                                                                                                        matSuffix
+                                                                                                                        [for]="pickUpDate4">
+                                                                                                                </mat-datepicker-toggle>
+                                                                                                                <mat-datepicker
+                                                                                                                        #pickUpDate4>
+                                                                                                                </mat-datepicker>
+                                                                                                                <mat-error
+                                                                                                                        *ngIf="outstationForm.get('pickUpDate').hasError('required')">
+                                                                                                                        please
+                                                                                                                        select
+                                                                                                                        the
+                                                                                                                        pick
+                                                                                                                        up
+                                                                                                                        date
+                                                                                                                </mat-error>
+                                                                                                        </mat-form-field>
+
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-4"
+                                                                                                style="padding-left: 7.5px;padding-right: 7.5px;">
+                                                                                                <div class="form-group">
+                                                                                                        <mat-label>
+                                                                                                                RETURN
+                                                                                                        </mat-label>
+                                                                                                        <mat-form-field
+                                                                                                                class="example-full-width">
+                                                                                                                <input matInput
+                                                                                                                        [min]="minDate"
+                                                                                                                        [matDatepicker]="Return">
+                                                                                                                <mat-datepicker-toggle
+                                                                                                                        matSuffix
+                                                                                                                        [for]="Return">
+                                                                                                                </mat-datepicker-toggle>
+                                                                                                                <mat-datepicker
+                                                                                                                        #Return>
+                                                                                                                </mat-datepicker>
+                                                                                                        </mat-form-field>
+                                                                                                        <!-- <mat-error
+                                                                                                                *ngIf="outstationForm.get('Return').hasError('required')">
+                                                                                                                please
+                                                                                                                select
+                                                                                                                the pick
+                                                                                                                up date
+                                                                                                        </mat-error> -->
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-4 timer"
+                                                                                                style="padding-left: 7.5px;padding-right: 0px;">
+                                                                                                <div class="form-group">
+                                                                                                        <mat-label>PICK
+                                                                                                                UP TIME
+                                                                                                        </mat-label>
+                                                                                                        <mat-form-field
+                                                                                                                class="example-full-width pickup-timer">
+                                                                                                                <mat-select
+                                                                                                                        formControlName="pickUpTime">
+
+                                                                                                                        <mat-option
+                                                                                                                                *ngFor="let pickup of pickups"
+                                                                                                                                [value]="pickup.value">
+                                                                                                                                {{pickup.viewValue}}
+                                                                                                                        </mat-option>
+                                                                                                                </mat-select>
+                                                                                                                <!-- <input type=""
+                                                                                                                        matInput
+                                                                                                                        placeholder="" FormControlName="pickUpTime"> -->
+                                                                                                                <mat-icon
+                                                                                                                        matSuffix>
+                                                                                                                        timer
+                                                                                                                </mat-icon>
+                                                                                                        </mat-form-field>
+                                                                                                        <mat-error
+                                                                                                                *ngIf="outstationForm.get('pickUpTime').hasError('required')">
+                                                                                                                Please
+                                                                                                                Select
+                                                                                                                the pick
+                                                                                                                up time
+                                                                                                        </mat-error>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-md-9 pull-right search-cab-btn">
+                                                                                        <button mat-button
+                                                                                                class="search-btn"
+                                                                                                (click)="outstationsearch()">SEARCH
+                                                                                                CAB</button>
+                                                                                </div>
+                                                                        </div>
+                                                                </form>
+
+                                                        </mat-tab>
+                                                        <mat-tab label="LOCAL">
+                                                                <form [formGroup]="localForm">
+                                                                        <div class="form-fileds">
+                                                                                <div class="form-group">
+                                                                                        <mat-label>CITY</mat-label>
+                                                                                        <mat-form-field
+                                                                                                class="example-full-width">
+                                                                                                <mat-select
+                                                                                                        formControlName="city">
+                                                                                                        <mat-option>
+                                                                                                                <ngx-mat-select-search
+                                                                                                                        [placeholderLabel]="'Search'"
+                                                                                                                        [noEntriesFoundLabel]="'No record found'"
+                                                                                                                        [formControl]="cityControl"
+                                                                                                                        [disableInitialFocus]="true">
+                                                                                                                </ngx-mat-select-search>
+                                                                                                        </mat-option>
+                                                                                                        <mat-option
+                                                                                                                title="{{lov.name}}"
+                                                                                                                *ngFor="let lov of lovs |filterData:cityControl.value:'name' "
+                                                                                                                [value]="lov.id">
+                                                                                                                {{lov.name}}
+                                                                                                        </mat-option>
+                                                                                                </mat-select>
+                                                                                                <!---- <input matInput
+                                                                                                        placeholder=""
+                                                                                                        value=""
+                                                                                                        formControlName="city"> -->
+                                                                                                <mat-error
+                                                                                                        *ngIf="localForm.get('city').hasError('required')">
+                                                                                                        Please select
+                                                                                                        the source
+                                                                                                        city</mat-error>
+                                                                                        </mat-form-field>
+
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                        <mat-label>PICK UP</mat-label>
+                                                                                        <mat-form-field
+                                                                                                class="example-full-width">
+                                                                                                <input matInput
+                                                                                                        [min]="minDate"
+                                                                                                        [matDatepicker]="pickUpDate1"
+                                                                                                        formControlName="pickUp">
+                                                                                                <mat-datepicker-toggle
+                                                                                                        matSuffix
+                                                                                                        [for]="pickUpDate1">
+                                                                                                </mat-datepicker-toggle>
+                                                                                                <mat-datepicker
+                                                                                                        #pickUpDate1>
+                                                                                                </mat-datepicker>
+                                                                                                <mat-error
+                                                                                                        *ngIf="localForm.get('pickUp').hasError('required')">
+                                                                                                        Please select
+                                                                                                        the pick
+                                                                                                        up date
+                                                                                                </mat-error>
+                                                                                        </mat-form-field>
+
+                                                                                </div>
+                                                                                <div class="form-group timer">
+                                                                                        <mat-label>PICK UP AT
+                                                                                        </mat-label>
+                                                                                        <mat-form-field
+                                                                                                class="example-full-width pickup-timer">
+                                                                                                <mat-select
+                                                                                                        formControlName="pickUpAt">
+                                                                                                        <mat-option
+                                                                                                                *ngFor="let pickup of pickups"
+                                                                                                                [value]="pickup.value">
+                                                                                                                {{pickup.viewValue}}
+                                                                                                        </mat-option>
+                                                                                                </mat-select>
+                                                                                                <mat-icon matSuffix>
+                                                                                                        timer</mat-icon>
+                                                                                                <mat-error
+                                                                                                        *ngIf="localForm.get('pickUpAt').hasError('required')">
+                                                                                                        Please select
+                                                                                                        the pick
+                                                                                                        up time
+                                                                                                </mat-error>
+                                                                                        </mat-form-field>
+
+                                                                                </div>
+
+                                                                                <div
+                                                                                        class="col-md-9 pull-right search-cab-btn">
+                                                                                        <button mat-button
+                                                                                                class="search-btn" (click)="localSearch()">SEARCH
+                                                                                                CAB</button>
+                                                                                </div>
+                                                                        </div>
+                                                                </form>
+                                                        </mat-tab>
+                                                        <mat-tab label="AIRPORT">
+                                                                <form [formGroup]="airportForm">
+                                                                        <div class="form-fileds">
+                                                                                <div class="form-group">
+                                                                                        <mat-label>CITY</mat-label>
+                                                                                        <mat-form-field
+                                                                                                class="example-full-width">
+                                                                                                <mat-select
+                                                                                                        formControlName="city">
+                                                                                                        <mat-option
+                                                                                                                *ngFor="let city of citys"
+                                                                                                                [value]="city.value">
+                                                                                                                {{city.viewValue}}
+                                                                                                        </mat-option>
+                                                                                                </mat-select>
+                                                                                                <mat-error
+                                                                                                        *ngIf="airportForm.get('city').hasError('required')">
+                                                                                                        Please select
+                                                                                                        the source
+                                                                                                        city
+                                                                                                </mat-error>
+
+                                                                                                <!-- <input matInput
+                                                                                                        placeholder=""
+                                                                                                        value=""
+                                                                                                        formControlName="city"> -->
+                                                                                        </mat-form-field>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <mat-label>TRIP</mat-label>
+                                                                                        <mat-form-field>
+                                                                                                <mat-select
+                                                                                                        formControlName="triping">
+                                                                                                        <mat-option
+                                                                                                                *ngFor="let trip of trips"
+                                                                                                                [value]="trip.value">
+                                                                                                                {{trip.viewValue}}
+                                                                                                        </mat-option>
+                                                                                                </mat-select>
+                                                                                                <mat-error
+                                                                                                        *ngIf="airportForm.get('triping').hasError('required')">
+                                                                                                        Please select
+                                                                                                        the trip
+                                                                                                        type</mat-error>
+                                                                                        </mat-form-field>
+
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <mat-label
+                                                                                                style="line-height: 18px;">
+                                                                                                PICKUP ADDRESS
+                                                                                        </mat-label>
+                                                                                        <mat-form-field
+                                                                                                class="example-full-width">
+                                                                                              <!-- <input matInput
+                                                                                                        placeholder=""
+                                                                                                        value=""
+                                                                                                        formControlName="pickUpAddress"> -->
+                                                                                                        <mat-select formControlName="pickUpAddress">
+                                                                                                        <mat-option
+                                                                                                        *ngFor="let city of citys"
+                                                                                                        [value]="city.value">
+                                                                                                        {{city.viewValue}}
+                                                                                                </mat-option>
+                                                                                         </mat-select>
+                                                                                                        
+                                                                                                <mat-error
+                                                                                                        *ngIf="airportForm.get('pickUpAddress').hasError('required')">
+                                                                                                        Please select
+                                                                                                        your
+                                                                                                        locality
+                                                                                                </mat-error>
+                                                                                        </mat-form-field>
+
+                                                                                </div>
+                                                                                       <div class="col-md-9 pull-right datefiled">
+                                                                                         <div class="col-md-6">
+                                                                                                <div class="form-group">
+                                                                                                        <mat-label>PICK
+                                                                                                                UP DATE
+                                                                                                        </mat-label>
+                                                                                                        <mat-form-field
+                                                                                                                class="example-full-width">
+                                                                                                                <input matInput
+                                                                                                                        [min]="minDate"
+                                                                                                                        [matDatepicker]="pickUpDate2"
+                                                                                                                        formControlName="pickUpDate">
+                                                                                                                <mat-datepicker-toggle
+                                                                                                                        matSuffix
+                                                                                                                        [for]="pickUpDate2">
+                                                                                                                </mat-datepicker-toggle>
+                                                                                                                <mat-datepicker
+                                                                                                                        #pickUpDate2>
+                                                                                                                </mat-datepicker>
+                                                                                                                <mat-error
+                                                                                                                        *ngIf="airportForm.get('pickUpDate').hasError('required')">
+                                                                                                                        Plesase
+                                                                                                                        select
+                                                                                                                        the
+                                                                                                                        pick
+                                                                                                                        up
+                                                                                                                        date
+                                                                                                                </mat-error>
+                                                                                                        </mat-form-field>
+
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-6 timer">
+                                                                                                <div class="form-group">
+                                                                                                        <mat-label>PICK
+                                                                                                                UP TIME
+                                                                                                        </mat-label>
+                                                                                                        <mat-form-field
+                                                                                                                class="example-full-width pickup-timer">
+                                                                                                                <mat-select formControlName="pickUpAt">
+                                                                                                                        <mat-option
+                                                                                                                                *ngFor="let pickup of pickups"
+                                                                                                                                [value]="pickup.value">
+                                                                                                                                {{pickup.viewValue}}
+                                                                                                                        </mat-option>
+                                                                                                                </mat-select>
+                                                                                                                <!-- <input type=""
+                                                                                                                        matInput
+                                                                                                                        placeholder="" formControlName="pickUpAt"> -->
+                                                                                                                <mat-icon
+                                                                                                                        matSuffix>
+                                                                                                                        timer
+                                                                                                                </mat-icon>
+                                                                                                                <mat-error
+                                                                                                                        *ngIf="airportForm.get('pickUpAt').hasError('required')">
+                                                                                                                        Please
+                                                                                                                        select
+                                                                                                                        the
+                                                                                                                        pick
+                                                                                                                        up
+                                                                                                                        time
+                                                                                                                </mat-error>
+                                                                                                        </mat-form-field>
+
+                                                                                                </div>
+                                                                                        </div>
+                                                                                </div>
+                                                                                <div
+                                                                                        class="col-md-9 pull-right search-cab-btn">
+                                                                                        <button mat-button
+                                                                                                class="search-btn" (click)="airportSearch()">SEARCH
+                                                                                                CAB</button>
+                                                                                               
+                                                                                </div>
+                                                                        </div>
+                                                                </form>
+                                                        </mat-tab>
+                                                </mat-tab-group>
+                                        </div>
+                                </div>
+
+                                <img class="home-banner-car" src="../../../../assets/images/home-banner-car.png">
+                        </div>
+                        <div class="col-md-6 home-right" style="padding-right: 0px;">
+                                
+                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+                                        <div class="carousel-inner">
+                                                <div class="item active">
+                                                        <img src="../../../../assets/images/mysore-palace-zoom-1.jpgs" alt="">
+                                                </div>
+
+                                                <div class="item">
+                                                        <img src="../../../../assets/images/slider1.png" alt="">
+                                                </div>
+
+                                                <div class="item">
+                                                        <img src="../../../../assets/images/slider1.png" alt="">
+                                                </div>
+                                        </div>
+
+                                        <!-- Left and right controls -->
+                                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                                <mat-icon>keyboard_arrow_left</mat-icon>
+                                        </a>
+                                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                                <mat-icon>keyboard_arrow_right</mat-icon>
+                                        </a>
+                                </div>
+
+                        </div>
+                </div>
+                <div class="aboutus" id="aboutus">
+                        <img class="about-right-img" src="../../../../assets/images/about-right.png">
+                        <div class="container">
+                                <div class="col-md-6 aboutus-left">
+                                        <img class="pull-right about-center-img"
+                                                src="../../../../assets/images/about-center.png">
+                                </div>
+                                <div class="col-md-6 about-right">
+                                        <h3>Welcome to </h3>
+                                        <h4>Car Rental Mysore</h4>
+                                        <p style="margin-top: 20px;">Car Rental Mysore is based in Mysore and our service details
+                                                are provided as below.we provide return trip also along with one way if needed.We are the leading outdoor
+                                               taxi service in Mysore by providing best service ar tha lowest fare.
+                                               For any queries,you may contact our customer service.</p>
+                                        <p style="margin-top: 20px;">We are one of the best and trusted outstation journey for 
+                                                a cost and safe journey in and around Bangalore,Mysore,Across Karanataka,Tamilnadu and kerala.</p>
+                                </div>
+                        </div>
+                        <img class="about-left-img" src="../../../../assets/images/about-left.png">
+                        <img class="about-right-buttom-img" src="../../../../assets/images/about-right-bottom.png">
+                </div>
+                <div class="packages" id="packages">
+                        <div class="container">
+                                <h3>Our Packages</h3>
+                                <p>Travel has helped us to understand the meaning of life and it has helped us become
+                                        better people. Each time we travel,we see the world with new eyes.</p>
+                                <div class="package-list">
+                                        <div class="col-md-4">
+                                                <img src="../../../../assets/images/package1.png">
+                                                <div class="packages-readmore">
+                                                        <div class="packages-readmore-div">
+                                                                <p>Mysore To Madikeri </p>
+                                                                <span class="day-backages">1 Day Packages</span>
+                                                                <div class="package-border"></div>
+                                                                <button mat-button (click)="dayOne()" class="readmore">Read More >>>>
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                                <img src="../../../../assets/images/package2.png">
+                                                <div class="packages-readmore">
+                                                        <div class="packages-readmore-div">
+                                                                <p>Mysore To Ooty </p>
+                                                                <span class="day-backages">2 Day Packages</span>
+                                                                <div class="package-border"></div>
+                                                                <button mat-button (click)="dayTwo()" class="readmore">Read More >>>>
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                                <img src="../../../../assets/images/package3.png">
+                                                <div class="packages-readmore">
+                                                        <div class="packages-readmore-div">
+                                                                <p>Mysore And Wayanadu</p>
+                                                                <span class="day-backages">3 Day Packages</span>
+                                                                <div class="package-border"></div>
+                                                                <button mat-button (click)="dayThree()" class="readmore">Read More >>>>
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-4 second-row">
+                                                <img src="../../../../assets/images/package4.png">
+                                                <div class="packages-readmore">
+                                                        <div class="packages-readmore-div">
+                                                                <p>Bangalore,Mysore,Coorg </p>
+                                                                <span class="day-backages">5 Day Packages</span>
+                                                                <div class="package-border"></div>
+                                                                <button mat-button (click)="dayFive()" class="readmore">Read More >>>>
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-4 second-row">
+                                                <img src="../../../../assets/images/package5.png">
+                                                <div class="packages-readmore">
+                                                        <div class="packages-readmore-div">
+                                                                <p>Kodaikanal,Mysore,Coorg & Ooty </p>
+                                                                <span class="day-backages">7 Day Packages</span>
+                                                                <div class="package-border"></div>
+                                                                <button mat-button (click)="daySeven()" class="readmore">Read More >>>>
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-4 second-row">
+                                                <img src="../../../../assets/images/package6.png">
+                                                <div class="packages-readmore">
+                                                        <div class="packages-readmore-div">
+                                                                <p> Mysore,coorg </p>
+                                                                <span class="day-backages">8 Day Packages</span>
+                                                                <div class="package-border"></div>
+                                                                <button mat-button (click)="dayEight()"class="readmore">Read More >>>>
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-12 align-center package-btn">
+                                                <button mat-button (click)="packageView()" class="package-view-btn">View More Packages</button>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="why-choose-us">
+                        <div class="container">
+                                <h3>Why Choose Us</h3>
+                                <p>Explore our first class limousine & affordable cab service</p>
+                                <div class="col-md-7 why-choose-left" style="padding: 0;">
+                                        <div class="col-md-6" style="padding: 0;">
+                                                <div class="col-md-4">
+                                                        <img src="../../../../assets/images/why-choose-us-left1.png">
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <h4>10,00,00,000+ </h4>
+                                                        <p>Kms Travelled</p>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-6" style="padding: 0;">
+                                                <div class="col-md-4">
+                                                        <img src="../../../../assets/images/why-choose-us-left2.png">
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <h4>Quick Response</h4>
+                                                        <p>On every Query</p>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-6" style="padding: 0;">
+                                                <div class="col-md-4">
+                                                        <img src="../../../../assets/images/why-choose-us-left3.gif">
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <h4>24 X 7 Car Support</h4>
+                                                        <p>Book Anytime</p>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-6" style="padding: 0;">
+                                                <div class="col-md-4">
+                                                        <img src="../../../../assets/images/why-choose-us-left4.png">
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <h4>Secured Online Payment</h4>
+                                                        <p>Kms Travelled</p>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-5 why-choose-us-right" style="padding: 0;">
+                                        <img src="../../../../assets/images/why-choose-us-right.png">
+                                </div>
+                        </div>
+                </div>
+                <div class="why-choose-us">
+                        <div class="container">
+                                <div class="multi-slider">
+                                        <div class="container">
+                                                <div class="row">
+                                                        <div class="col-md-12">
+                                                                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                                                                        <div class="MultiCarousel-inner">
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img1.png">
+                                                                                        <h4>TATA INDICA
+                                                                                                        4+1
+                                                                                                        SEATER
+                                                                                        </h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img2.png">
+                                                                                        <h4>TOYOTA
+                                                                                                        INNOVA
+                                                                                                        7+1</h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img3.png">
+                                                                                        <h4>TOYOTA ETIOS
+                                                                                                        4+1
+                                                                                                        SEATER
+                                                                                        </h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img4.png">
+                                                                                        <h4>MAHINDRA XUV
+                                                                                                        7+1
+                                                                                                        SEATER
+                                                                                        </h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img2.png">
+                                                                                        <h4>TOYOTA
+                                                                                                        INNOVA
+                                                                                                        7+1</h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img3.png">
+                                                                                        <h4> TOYOTA
+                                                                                                        ETIOS
+                                                                                                        4+1
+                                                                                                        SEATER
+                                                                                        </h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img1.png">
+                                                                                        <h4>TATA INDICA
+                                                                                                        4+1
+                                                                                                        SEATER
+                                                                                        </h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img2.png">
+                                                                                        <h4>TOYOTA
+                                                                                                        INNOVA
+                                                                                                        7+1</h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img3.png">
+                                                                                        <h4>TOYOTA ETIOS
+                                                                                                        4+1
+                                                                                                        SEATER
+                                                                                        </h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img1.png">
+                                                                                        <h4>TATA INDICA
+                                                                                                        4+1
+                                                                                                        SEATER
+                                                                                        </h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img2.png">
+                                                                                        <h4>TOYOTA
+                                                                                                        INNOVA
+                                                                                                        7+1</h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item">
+                                                                                <div class="pad15">
+                                                                                        <div
+                                                                                        class="multi-slider-back">
+                                                                                        <img
+                                                                                                        src="../../../../assets/images/multi-slider-img3.png">
+                                                                                        <h4> TOYOTA
+                                                                                                        ETIOS
+                                                                                                        4+1
+                                                                                                        SEATER
+                                                                                        </h4>
+                                                                                        <p>CALL: +91
+                                                                                                        8867755706
+                                                                                        </p>
+                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                           
+                                                                        </div>
+                                                                        <!-- <div class="multi-conterl align-center">
+                                                                                <button class="leftLst carousel-control"
+                                                                                        href="#MultiCarousel"
+                                                                                        data-slide="prev">
+                                                                                        <mat-icon>keyboard_arrow_left
+                                                                                        </mat-icon>
+                                                                                </button>
+                                                                                <button class="rightLst carousel-control"
+                                                                                        href="#MultiCarousel"
+                                                                                        data-slide="next">
+                                                                                        <mat-icon>keyboard_arrow_right
+                                                                                        </mat-icon>
+                                                                                </button>
+                                                                        </div> -->
+                                                                        <button class="btn  leftLst"><mat-icon>keyboard_arrow_left
+                                                                        </mat-icon></button>
+                                                                        <button class="btn  rightLst"><mat-icon>keyboard_arrow_right
+                                                                        </mat-icon></button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="footer">
+                        <app-footer></app-footer>
+
+                </div>
+        </div>
+</div>

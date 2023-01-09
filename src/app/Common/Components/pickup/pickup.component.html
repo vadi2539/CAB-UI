@@ -1,0 +1,70 @@
+<div class="body">
+    <div class="pickup-page">
+        <div class="top-header">
+            <app-header></app-header>
+        </div>
+
+    <div class="pickup-form">
+
+        <div class="card">
+            <form [formGroup]="pickupform">
+
+                <div class="formgroup">
+
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput autocomplete="off" placeholder="" required type="text" formControlName="name">
+                        <mat-error *ngIf="pickupform.get('name').hasError('required')">Please enter your name</mat-error>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="formgroup">
+
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput autocomplete="off" placeholder="" required type="text" formControlName="gmail">
+                        <mat-error *ngIf="pickupform.get('gmail').hasError('required')">Please enter your email address</mat-error>
+                    </mat-form-field>
+
+                </div>
+
+
+                <div class="formgroup">
+                    <mat-form-field >
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput placeholder="Input" required type="text"  formControlName="mobileNumber">
+                        <mat-error *ngIf="pickupform.get('mobileNumber').hasError('required')"></mat-error>
+                    </mat-form-field>
+  
+                </div>
+                
+
+                <div class="formgroup">
+
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <mat-select >
+                            <mat-option *ngFor="let food of foods" formControlName="pickUpAddress" [value]="food.value">{{food.viewValue}}</mat-option>
+                            <mat-error *ngIf="pickupform.get('pickUpAddress').hasError('required')"></mat-error>
+                        </mat-select>
+                    </mat-form-field>  
+                </div>    
+                
+                <div class="button-sub-clt" >
+                    <a mat-raised-button (click)="proceed()" class="com-detail-sub">Proceed</a>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <app-footer></app-footer>
+    </div>
+
+
+    </div>
+</div>

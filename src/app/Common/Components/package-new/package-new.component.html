@@ -1,0 +1,189 @@
+<div class="body">
+    <div class="packaage-page">
+        <div class="top-header">
+            <app-header></app-header>
+        </div>
+
+        <div class="packagedetail">
+            <div class="container">
+                <h4>Iteration:</h4>
+                <h4>Tour No – 1 - 5 Days / 4 Night.
+                    Bangalore To Mysore, Coorg Place. </h4>
+                <h4> 2 Night Mysore - 2 Night Madikeri ( Coorg ) – ( Arrival & Dropping - Bangalore ).
+                </h4>
+
+                <button mat-button (click)="detailCLick($event)" class="car-details-btn centre">DAY</button>
+                <div class="bottom-list" *ngIf="expand=='1'">
+                    <div class="login-tabs">
+                        <mat-tab-group>
+                            <mat-tab label="Day1">
+                                <ul class="inclu-list">
+                                    <li>
+                                        <h4>Morning</h4>
+                                        <p>Arrive Bangalore, Meet assist at the Airport, Railway station Or Hotel and
+                                            Later proceed to start the journey to Bangalore Tour </p>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <h4>Visit Place</h4>
+                                        <p> Visit Cubbon Park, Vidhana Soudha, Vishvesvaraiah Industrial and
+                                            Technological Museum, Lalbagh Park, iskcon Temple</p>
+                                    </li>
+                                    <br>
+
+                                    <li>
+                                        <h4>Night</h4>
+                                        <p>Night stay in Mysore</p>
+                                    </li>
+                                </ul>
+                                
+                            </mat-tab>
+                            <mat-tab label="Day2"> 
+                                <ul class="inclu-list">
+                                    <li>  
+                                        <h4>Morning</h4>
+                                        <p>Morning breakfast Proceed To Chamundeshwari Temple (1000 years old)</p>
+                                    </li>
+                                    <br>
+                                    <li>
+                                    <h4>Visit Place</h4>
+                                    <p>  Nandi Bull Temple, Mysore City View Point, Karanji Lake, Mysore Zoo, Proceed to Brindavan Garden (KRS - 1927 & completed in 1932 ) </p>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <h4><b>Night</b></h4>
+                                        <p>Night stay in Mysore</p>
+                                    </li>
+                                </ul>    
+                            </mat-tab>
+                            
+                            <mat-tab label="Day3"> 
+                                <ul class="inclu-list">
+                                    <li>  
+                                        <h4>Morning</h4>
+                                        <p>Morning breakfast Checkout Hotel proceed to Kushalnagar Dalai Lama Golden Temple (Tibetian
+                                            Golden Temple )</p>
+                                    </li>
+                                    <br>
+                                    <li>
+                                    <h4>Visit Place</h4>
+                                    <p>   Kaveri Nisargadhama, Dubare Forest (Boat Rafting )</p>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <h4><b>Night</b></h4>
+                                        <p>Night stay in Coorg</p>
+                                    </li>
+                                </ul>    
+                            </mat-tab>
+
+                            <mat-tab label="Day4"> 
+                                
+                                <ul class="inclu-list">
+                                    <li>  
+                                        <h4>Morning</h4>
+                                        <p>Morning breakfast proceed to Talakaveri (Kaveri River Birthplace)</p>
+                                    </li>
+                                    <br>
+                                    <li>
+                                    <h4>Visit Place</h4>
+                                    <p>   Bhagamandala ( Triveni
+                                        Sangam ) Raja Seat (Viewport )</p>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <h4><b>Night</b></h4>
+                                        <p>Night stay in Coorg ( Madikeri )</p>
+                                    </li>
+                                </ul>    
+                            </mat-tab>
+                            
+                            <mat-tab label="Day5"> 
+                                <ul class="inclu-list">
+                                    <li>  
+                                        <h4>Morning</h4>
+                                        <p>Morning breakfast Checkout Hotel</p>
+                                    </li>
+                                    <br>
+                                    <li>
+                                    <h4>Visit Place</h4>
+                                    <p>   proceed to Omkareshwar Temple, Abbey Falls, Harangi Dam & go
+                                        for some shopping</p>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <h4><b>Night</b></h4>
+                                        <p> Bangalore Or Mysore train /Bus for onward journey.</p>
+                                    </li>
+                                </ul>    
+                            </mat-tab>
+                           
+                        </mat-tab-group>
+                    </div>
+                </div>
+            
+
+        <div class="table-searching-field">
+
+            <div class="table-div">
+
+
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="car">
+                        <th mat-header-cell *matHeaderCellDef> Types Of Car </th>
+                        <td mat-cell *matCellDef="let element"> {{element.car}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="non">
+                        <th mat-header-cell *matHeaderCellDef> Non A/C </th>
+                        <td mat-cell *matCellDef="let element"> {{element.non}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ac">
+                        <th mat-header-cell *matHeaderCellDef> A/C </th>
+                        <td mat-cell *matCellDef="let element"> {{element.ac}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+            </div>
+
+            <div class="Including-amt">
+                <ul>
+                    <li>
+                        <h4>Including</h4> Driver Bata, Vehicle Charges, Sightseeing Charges, Fuel Charges.
+                    </li>
+                    <li>
+                        <h4>Excluding </h4>All Type food, Personal Nature like tips, Telephone, Sightseeing
+                        Places Entry Fees, Parking Charges, Toll Charges..
+                    </li>
+                    <li>
+                        <h4> Options</h4>
+                        Hotel booking- cab driver will take you to the tie-up hotel, Additional charges for
+                        hotel
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <img src="../../../../assets/images/dayfive1.jpg">
+        </div>
+        <div class="col-md-4">
+            <img src="../../../../assets/images/dayfive2.png">
+        </div>
+        <div class="col-md-4">
+            <img src="../../../../assets/images/dayfive3.png">
+        </div>
+        <div class="footer" style="margin-top: 60px;">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>

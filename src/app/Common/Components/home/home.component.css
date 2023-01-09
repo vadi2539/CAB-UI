@@ -1,0 +1,9 @@
+.MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
+    .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+        .MultiCarousel .MultiCarousel-inner .item { float: left;}
+        .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px;  color:#666;}
+    .MultiCarousel .leftLst, .MultiCarousel .rightLst { background: rgb(204 204 204 / 69%) !important; position:absolute; border-radius:0%;top:calc(50% - 20px); }
+    .MultiCarousel .leftLst { left:25px; }
+    .MultiCarousel .rightLst { right:0; }
+    
+        .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }

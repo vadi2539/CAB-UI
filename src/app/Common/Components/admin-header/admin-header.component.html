@@ -1,0 +1,49 @@
+<div class="header">
+       
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <div class="logo">
+          <a class="navbar-brand" href="#home"><img src="../../../../assets/images/logo.png"></a>
+          
+        </div>
+        </div>
+
+        <div class="right-header-menu">
+          <div class="dropdown">
+       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       <img class="slideInDown animated" src="../../../../assets/images/wel-user.png" class="wel-user-icon" width="30px" style="width: 20px;margin-right: 8px;">Admin
+       <span class="caret"></span>
+       </button>
+     
+       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+         <ul>
+        <li><a (click)="changePassword()"><img src="../../../../assets/images/changepassword.png" width="24px"> Change Password</a></li>
+         <li><a href="#/home"><img src="../../../../assets/images/logout.png" width="24px">Logout</a></li>
+         </ul>
+       </div>
+       </div>
+         </div> 
+          
+
+        
+        <div class="collapse navbar-collapse" id="myNavbar">
+         
+          <ul class="nav navbar-nav navbar-right">
+            <li><a routerLink="/dashboard" routerLinkActive="active" (click)="refresh()">Dashboard</a></li>
+            <li><a routerLink="/mail" routerLinkActive="active">Mail Configation</a></li>
+          </ul>
+
+        </div>
+
+     
+      </div>
+    </nav>
+  </div>
+  
